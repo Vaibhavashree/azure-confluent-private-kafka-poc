@@ -458,6 +458,17 @@ The following enhancements are recommended for production deployments:
 * Disaster Recovery
 * Infrastructure Drift Detection
 
+# Architecture Principles
+
+The solution was designed around the following principles:
+
+- Private connectivity by default
+- Infrastructure as Code
+- Least privilege access
+- Operational observability
+- Modular infrastructure design
+- Cloud-native operations
+
 ---
 
 # Conclusion
