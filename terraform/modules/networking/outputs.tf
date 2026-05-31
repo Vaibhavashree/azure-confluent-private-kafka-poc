@@ -34,6 +34,12 @@ output "private_endpoint_subnet_id" {
   value = azurerm_subnet.private_endpoint.id
 }
 
+output "private_endpoint_id" {
+  description = "Confluent Private Endpoint ID"
+
+  value = azurerm_private_endpoint.confluent.id
+}
+
 output "nat_gateway_id" {
   description = "NAT Gateway ID"
 

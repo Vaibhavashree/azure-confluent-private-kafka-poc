@@ -1,4 +1,59 @@
 #############################################
+# Confluent PrivateLink Architecture
+#
+# # Architecture Reference
+#
+# Actual deployment requires:
+# - Confluent Cloud networking entitlement
+# - Confluent Network
+# - PrivateLink Access
+# - PrivateLink Attachment
+#
+# Example resources:
+#
+# resource "confluent_network" "azure_network" {
+#   display_name = "azure-privatelink-network"
+#
+#   cloud  = "AZURE"
+#   region = var.region
+#
+#   connection_types = ["PRIVATELINK"]
+#
+#   environment {
+#     id = confluent_environment.env.id
+#   }
+# }
+#
+# resource "confluent_private_link_access" "azure" {
+#
+#   environment {
+#     id = confluent_environment.env.id
+#   }
+#
+#   network {
+#     id = confluent_network.azure_network.id
+#   }
+# }
+#
+# resource "confluent_private_link_attachment" "azure" {
+#
+#   environment {
+#     id = confluent_environment.env.id
+#   }
+#
+#   network {
+#     id = confluent_network.azure_network.id
+#   }
+# }
+#
+#############################################
+# The Azure-side PrivateLink resources are implemented
+# in the networking module. The resources below
+# illustrate the corresponding Confluent Cloud
+# networking components required for private connectivity.
+
+
+#############################################
 # Confluent Environment
 #############################################
 

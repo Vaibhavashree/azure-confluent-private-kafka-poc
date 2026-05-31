@@ -28,3 +28,11 @@ variable "private_endpoint_subnet_address_space" {
 
   default = ["10.0.3.0/24"]
 }
+
+variable "confluent_service_alias" {
+  description = "Confluent PrivateLink Service Alias"
+
+  type = string
+
+  default = "replace-with-confluent-service-alias"
+}

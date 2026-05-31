@@ -1,3 +1,7 @@
+#############################################
+# Networking
+#############################################
+
 output "resource_group_name" {
   description = "Resource Group Name"
 
@@ -22,6 +26,16 @@ output "private_endpoint_subnet_id" {
   value = module.networking.private_endpoint_subnet_id
 }
 
+output "private_endpoint_id" {
+  description = "Confluent Private Endpoint ID"
+
+  value = module.networking.private_endpoint_id
+}
+
+#############################################
+# AKS
+#############################################
+
 output "aks_cluster_name" {
   description = "AKS Cluster Name"
 
@@ -32,6 +46,16 @@ output "aks_cluster_id" {
   description = "AKS Cluster ID"
 
   value = module.aks.aks_cluster_id
+}
+
+#############################################
+# Confluent
+#############################################
+
+output "confluent_environment_id" {
+  description = "Confluent Environment ID"
+
+  value = module.confluent.environment_id
 }
 
 output "kafka_cluster_id" {

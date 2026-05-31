@@ -1,8 +1,10 @@
-location            = "eastus2"
 resource_group_name = "rg-confluent-mgmt-poc"
 
+location = "eastus2"
+
 aks_node_count = 1
-aks_vm_size    = "Standard_B2s"
+
+aks_vm_size = "Standard_B2s"
 
 confluent_cloud_api_key    = "replace_me"
 confluent_cloud_api_secret = "replace_me"

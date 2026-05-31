@@ -28,7 +28,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   ###########################################
-  # Identity
+  # Managed Identity
   ###########################################
 
   identity {
@@ -36,7 +36,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   ###########################################
-  # Azure CNI
+  # Azure CNI Networking
   ###########################################
 
   network_profile {
@@ -45,7 +45,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
     network_policy = "azure"
 
-    outbound_type = "userAssignedNATGateway"
+    outbound_type = "loadBalancer"
   }
 
   tags = {

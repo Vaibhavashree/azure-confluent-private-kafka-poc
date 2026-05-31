@@ -58,6 +58,34 @@ resource "azurerm_subnet" "private_endpoint" {
 }
 
 #############################################
+# Confluent Private Endpoint
+#############################################
+
+resource "azurerm_private_endpoint" "confluent" {
+
+  name                = "pep-confluent-kafka"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+
+  subnet_id = azurerm_subnet.private_endpoint.id
+
+  private_service_connection {
+
+    name = "psc-confluent"
+
+    is_manual_connection = false
+
+    private_connection_resource_alias = var.confluent_service_alias
+  }
+
+  tags = {
+    Environment = "POC"
+    Project     = "Confluent"
+    ManagedBy   = "Terraform"
+  }
+}
+
+#############################################
 # NAT Gateway Public IP
 #############################################
 

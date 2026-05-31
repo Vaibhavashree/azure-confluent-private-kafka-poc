@@ -338,6 +338,16 @@ Benefits include:
 * Private connectivity
 * Predictable network paths
 
+Confluent Cloud private networking is represented by:
+
+- Confluent Network
+- PrivateLink Access
+- PrivateLink Attachment
+
+The Azure-side implementation is modeled using:
+- Azure Private Endpoint
+- Private DNS Zone
+- VNet Integration
 ---
 
 # Security Design
