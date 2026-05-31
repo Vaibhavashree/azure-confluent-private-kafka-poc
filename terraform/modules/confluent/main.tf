@@ -1,7 +1,7 @@
 #############################################
 # Confluent PrivateLink Architecture
 #
-# # Architecture Reference
+# Architecture Reference
 #
 # Actual deployment requires:
 # - Confluent Cloud networking entitlement
