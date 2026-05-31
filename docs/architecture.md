@@ -417,6 +417,11 @@ Analytics Platform
 
 AKS provides a managed Kubernetes platform capable of running scalable producer and consumer workloads.
 
+Note:
+AKS uses Azure CNI networking and is integrated with a NAT Gateway for controlled outbound connectivity.
+
+Kafka traffic does not traverse the NAT Gateway and instead uses Azure PrivateLink through a dedicated Private Endpoint.
+
 ---
 
 ## Why Confluent Cloud?
