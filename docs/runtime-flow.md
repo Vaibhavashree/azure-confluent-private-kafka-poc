@@ -147,3 +147,25 @@ The runtime flow incorporates:
 * Kafka ACLs
 
 All communication remains encrypted in transit.
+
+Producer
+   |
+AKS
+   |
+Private DNS
+   |
+Private Endpoint
+   |
+Azure PrivateLink
+   |
+Confluent Kafka
+   |
+meter-readings
+
+Consumer
+   |
+Confluent Kafka
+   |
+grid-alerts
+   |
+AKS Analytics Service

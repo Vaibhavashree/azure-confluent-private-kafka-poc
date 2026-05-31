@@ -166,6 +166,16 @@ Responsible for:
 - ACLs
 
 ---
+## Deployment Workflow
+
+1. Deploy Networking Module
+2. Deploy AKS Module
+3. Deploy Confluent Module
+4. Configure Private Connectivity
+5. Deploy Kafka Clients
+6. Validate DNS Resolution
+7. Verify Topic Access
+8. Validate Producer and Consumer Connectivity
 
 ## Observability
 
@@ -196,9 +206,11 @@ Validation includes:
 
 ## Assumptions
 
-Confluent Cloud resources require a valid Confluent Cloud account and API credentials.
-
-Terraform definitions are provided for all Confluent resources. Azure resources can be deployed and validated independently within the lab environment.
+- Azure subscription is available.
+- Confluent Cloud account is available.
+- Confluent Cloud API credentials are available.
+- Dedicated Kafka Cluster entitlement is available.
+- Terraform version >= 1.6.
 
 ---
 

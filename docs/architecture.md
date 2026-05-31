@@ -56,49 +56,71 @@ Example payload:
 
 # High-Level Architecture
 
-```text
-+--------------------------------------------------+
-| Azure Subscription                               |
-|                                                  |
-| rg-confluent-mgmt-poc                            |
-|                                                  |
-| +----------------------------------------------+ |
-| | vnet-confluent-mgmt-poc                      | |
-| |                                              | |
-| | +----------------------+                     | |
-| | | AKS Cluster          |                     | |
-| | |                      |                     | |
-| | | meter-ingestion      |                     | |
-| | | grid-analytics       |                     | |
-| | +----------+-----------+                     | |
-| |            |                                 | |
-| |            v                                 | |
-| |     Private DNS Zone                         | |
-| |            |                                 | |
-| |            v                                 | |
-| |     Azure Private Endpoint                   | |
-| +------------+---------------------------------+ |
-|              |                                   |
-|              v                                   |
-|        Azure PrivateLink                         |
-+--------------+-----------------------------------+
-               |
-               v
-+--------------------------------------------------+
-| Confluent Cloud                                  |
-|                                                  |
-| Environment                                      |
-| Dedicated Kafka Cluster                          |
-|                                                  |
-| Topics                                           |
-|   - meter-readings                               |
-|   - grid-alerts                                  |
-|                                                  |
-| Service Account                                  |
-| API Key                                          |
-| ACLs                                             |
-+--------------------------------------------------+
-```
++------------------------------------------------------------------+
+| Azure Subscription                                               |
+|                                                                  |
+| Resource Group                                                   |
+| rg-confluent-mgmt-poc                                            |
+|                                                                  |
+|  +------------------------------------------------------------+  |
+|  | VNet: vnet-confluent-mgmt-poc                             |  |
+|  | 10.0.0.0/16                                               |  |
+|  |                                                          |  |
+|  |  +-----------------------+                              |  |
+|  |  | AKS Subnet            |                              |  |
+|  |  | 10.0.2.0/24           |                              |  |
+|  |  |                       |                              |  |
+|  |  | AKS Cluster           |                              |  |
+|  |  |                       |                              |  |
+|  |  | meter-ingestion       |                              |  |
+|  |  | grid-analytics        |                              |  |
+|  |  +-----------+-----------+                              |  |
+|  |              |                                          |  |
+|  |              | Kafka Traffic                            |  |
+|  |              v                                          |  |
+|  |  +-----------------------+                              |  |
+|  |  | Private DNS Zone      |                              |  |
+|  |  | privatelink.          |                              |  |
+|  |  | confluent.cloud       |                              |  |
+|  |  +-----------+-----------+                              |  |
+|  |              |                                          |  |
+|  |              v                                          |  |
+|  |  +-----------------------+                              |  |
+|  |  | Private Endpoint      |                              |  |
+|  |  | 10.0.3.0/24           |                              |  |
+|  |  +-----------+-----------+                              |  |
+|  |                                                          |  |
+|  |  +-----------------------+                              |  |
+|  |  | NAT Gateway           |                              |  |
+|  |  | Public IP             |                              |  |
+|  |  +-----------+-----------+                              |  |
+|  |              |                                          |  |
+|  |              | Internet Traffic                         |  |
+|  |              v                                          |  |
+|  |         Azure Internet                                 |  |
+|  +--------------------------------------------------------+  |
+|                                                                  |
++----------------------------+-------------------------------------+
+                             |
+                             | Azure PrivateLink
+                             |
+                             v
++------------------------------------------------------------------+
+| Confluent Cloud                                                  |
+|                                                                  |
+| Environment: energy-poc-env                                      |
+|                                                                  |
+| Dedicated Kafka Cluster                                          |
+|                                                                  |
+| Topics                                                           |
+|   - meter-readings                                               |
+|   - grid-alerts                                                  |
+|                                                                  |
+| Service Account                                                  |
+| API Key                                                          |
+| ACLs                                                             |
++------------------------------------------------------------------+
+
 
 ---
 
