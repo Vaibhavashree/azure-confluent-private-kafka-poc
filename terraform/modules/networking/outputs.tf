@@ -57,3 +57,9 @@ output "private_dns_zone_name" {
 
   value = azurerm_private_dns_zone.confluent.name
 }
+
+output "api_key_id" {
+  description = "Kafka API Key ID"
+
+  value = module.confluent.api_key_id
+}
